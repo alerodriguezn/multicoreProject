@@ -56,9 +56,7 @@ def main():
             fin_html = t.time()
 
             print(c.CGREENBG+"Duración de la conversion CON multiprocessing: \u231B "+ str(fin_html-inicio_html)+c.CEND)
-            pass
-
-            
+            pass           
 
         elif(op == "2"):
             os.system("clear")
