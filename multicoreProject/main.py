@@ -49,14 +49,7 @@ def main():
 
             input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
 
-            print(c.CITALIC+c.CRED+"Realizando Peticiones....."+c.CEND)\
-
-            inicio_html = t.time()
-            lista_html = a.conversionHTML_mp(lista_contenido)
-            fin_html = t.time()
-
-            print(c.CGREENBG+"Duración de la conversion CON multiprocessing: \u231B "+ str(fin_html-inicio_html)+c.CEND)
-            pass           
+                   
 
         elif(op == "2"):
             os.system("clear")

@@ -37,17 +37,6 @@ def contenido_peticion_mp(lista_sitios_web):
     return resultado
 
 
-def conversionHTML(sitio):
-    return BeautifulSoup(sitio.content,"html.parser")
-
-
-def conversionHTML_mp(lista_contenidos):
-    p = Pool()
-    resultado = p.map(conversionHTML, lista_contenidos)
-    p.close
-    p.join
-    return resultado
-
 
     
     
