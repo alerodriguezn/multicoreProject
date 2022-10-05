@@ -38,7 +38,6 @@ def obtenerMetadata_mp(lista_contenido):
 
 
 
-
 """
 lista_webs=[
 requests.get('https://www.netflix.com/us-es/'),
