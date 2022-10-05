@@ -1,9 +1,12 @@
-import time as t , analisis as a, colores as c, os, datos as d, numpy as np
+#pip install bs4
+import time as t , peticiones as p, colores as c, os, datos as d, numpy as np, analisis as a
 import multiprocessing
+
 
 
 lista_contenido = []
 lista_html = []
+lista_metadata = []
 
 def main():
 
@@ -15,11 +18,15 @@ def main():
         =============================
                 BIENVENIDO \U0001f44b    
         -----------------------------                         
-        1. Analizar Sitios Webs \U0001f50d
+        1. Obtener Contenido de los Sitios Web \U0001f50d
         -----------------------------
-        2. Ver Datos \U0001f4c4
+        2. Obtener Metadatos de los Sitios Web \U0001f50d
         -----------------------------
-        3. Salir \U0001f6aa
+        4. Analizar Metadatos \U0001f52c
+        -----------------------------
+        5. Ver Datos Obtenidos\U0001f4c4
+        -----------------------------
+        6. Salir \U0001f6aa
         ============================
         """+c.CEND)
 
@@ -34,18 +41,20 @@ def main():
 
             print(c.CITALIC+c.CRED+"Realizando Peticiones....."+c.CEND)
 
-            inicio_mul = t.time()
-            lista_contenido = a.contenido_peticion_mp(d.sitios_webs)
-            fin_mul = t.time()
-            print(c.CGREENBG+"Duración CON multiprocessing: \u231B "+ str(fin_mul-inicio_mul)+c.CEND)
-            print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)
-
             i = t.time()
-            a.obtener_contenido_secuencial(d.sitios_webs)
+            p.obtener_contenido_secuencial(d.sitios_webs)
             f = t.time()
             print(c.CGREENBG+"Duración SIN multiprocessing: \u231B "+ str(f-i)+c.CEND )
             
-            print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)           
+            print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)   
+
+            inicio_mul = t.time()
+            lista_contenido = p.contenido_peticion_mp(d.sitios_webs)
+            pass
+    
+            fin_mul = t.time()
+            print(c.CGREENBG+"Duración CON multiprocessing: \u231B "+ str(fin_mul-inicio_mul)+c.CEND)
+            print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)        
 
             input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
 
@@ -53,6 +62,10 @@ def main():
 
         elif(op == "2"):
             os.system("clear")
+            global lista_metadata
+
+            lista_metadata = a.obtenerMetadata_mp(lista_contenido)
+            pass
         
         elif(op == "3"):
             break;

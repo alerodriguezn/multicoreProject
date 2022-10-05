@@ -1,53 +1,41 @@
-#pip install bs4
-import requests
-import datos as d
-from bs4 import BeautifulSoup
+
+from curses import meta
 from multiprocessing import Pool
-import colores as c
-import main as m
 
-import time as t
- 
-
-# Variables y listas globales
-lista_contenido = []
+from bs4 import BeautifulSoup
 
 
-def obtener_contenido_secuencial(lista_sitios_web):
-    "Funcion que obtiene el contenido de los sitios webs de forma secuencial"
-    global lista_contenido
-    for ws in lista_sitios_web:
-        lista_contenido.append(requests.get(ws))
-    return lista_contenido
-
-def contenido_peticion(lista_sitios_web):
-    """
-    Realiza una peticion a un sitio web y retorna el contenido
-    """
+def obtenerMetadata(sitio):
     
-    return requests.get(lista_sitios_web)
+    lista = []
+    metadata = ""
+    url = sitio.url
+    lista.append(url)
+    contenido = BeautifulSoup(sitio.content,"html.parser")
+
+    keywords = str(contenido.find(attrs={'name':'keywords'}))
+    if (keywords != None):
+        metadata = keywords
+    descrip_name = str(contenido.find(attrs={'name':'Description'}))
+    if (keywords != None):
+        metadata += " "+descrip_name
+    descrip_prop = str(contenido.find(attrs={'property':'og:description'}))
+    if (keywords != None):
+        metadata += " "+descrip_prop
+
+    lista.append(metadata)
+
+    return lista
 
 
-def contenido_peticion_mp(lista_sitios_web):
+def obtenerMetadata_mp(lista_contenido):
     "Funcion que ejecuta una funcion para obtener el contenido de un sitio web utilizando multiprocessing"
-    p = Pool()
-    resultado = p.map(contenido_peticion,lista_sitios_web)
-    p.close
-    p.join
+    m = Pool()
+    resultado = m.map(obtenerMetadata,lista_contenido)
+    m.close
+    m.join
     return resultado
 
-
-
-    
-    
-
-
-
-
-
-
-
-        
 
 
 
