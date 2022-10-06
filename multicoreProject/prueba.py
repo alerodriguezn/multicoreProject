@@ -1,5 +1,2 @@
-hola1 = "a"
-
-hola1 += " "+"2"
-
-print(hola1) 
+prueba = '<meta content="ver películas, películas en línea, películas online, ver TV, TV en línea, TV online, ver programas, programas en línea, programas online, programas de TV, series en línea, series online, programas en línea, programas online, programas de TV, ver series, películas en streaming,TV en streaming, streaming inmediato, streaming al instante, ver en línea, ver online, películas, ver películas en Costa Rica, ver TV en línea, ver TV online, sin descargas, películas completas" name="keywords"/> None <meta content="Disfruta películas y series en internet o en tu smart TV, consola de videojuegos, PC, Mac, dispositivo móvil, tablet y más." property="og:description"/>'
+print(('series' in prueba))

@@ -1,7 +1,7 @@
 
 from curses import meta
 from multiprocessing import Pool
-
+import keywords as k
 from bs4 import BeautifulSoup
 
 
@@ -17,10 +17,10 @@ def obtenerMetadata(sitio):
     if (keywords != None):
         metadata = keywords
     descrip_name = str(contenido.find(attrs={'name':'Description'}))
-    if (keywords != None):
+    if (descrip_name != None):
         metadata += " "+descrip_name
     descrip_prop = str(contenido.find(attrs={'property':'og:description'}))
-    if (keywords != None):
+    if (descrip_prop != None):
         metadata += " "+descrip_prop
 
     lista.append(metadata)
@@ -37,6 +37,31 @@ def obtenerMetadata_mp(lista_contenido):
     return resultado
 
 
+# Palabras Claves (tupla) Tupla con las palabras a validar en nuestras categorias existentes.
+def encontrarPalabrasCategorias(lista_metadata_sitio):
+    
+    for metadata_sitio in lista_metadata_sitio:
+        # Este diccionario contiene las categorias y la cantidad de palabras que se encuentran de ellas.
+        diccionarioCategoria = {"comercio_electronico":0, "servicios_streaming":0, "tienda_ropa":0}
+
+        # Contamos la cantidad palabras encontradas en cada categoria
+        for key ,value in k.palabras_claves.items():
+            for i in value:
+                if i in metadata_sitio[1]:
+                    diccionarioCategoria[key]+=1
+
+        # Recorremos el resultado y retornamos la categoria dominante segun la cantidad de palabras
+        mayor = 0
+        categoriaDominante = "Ninguna categoria presente"
+        for key, value in diccionarioCategoria.items():
+            if value > mayor:
+                categoriaDominante = key
+                mayor = value
+        print([metadata_sitio[0],categoriaDominante])
+
+# print("La categoria dominante es: "+encontrarPalabrasCategorias(("ropa","shoes","camisas","juegos","series","novela","pantalones")))
+# print("Resultados (Diccionario): ")
+# print(diccionarioCategoria)
 
 """
 lista_webs=[

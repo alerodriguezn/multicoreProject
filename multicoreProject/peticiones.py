@@ -1,4 +1,3 @@
-from unittest import result
 import requests
 import datos as d
 from bs4 import BeautifulSoup

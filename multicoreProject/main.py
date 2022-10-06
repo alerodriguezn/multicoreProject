@@ -12,7 +12,7 @@ def main():
 
 
     while(True):
-        os.system("clear")
+        os.system("cls")
 
         print(c.CRED+"""
         =============================
@@ -22,11 +22,11 @@ def main():
         -----------------------------
         2. Obtener Metadatos de los Sitios Web \U0001f50d
         -----------------------------
-        4. Analizar Metadatos \U0001f52c
+        3. Analizar Metadatos \U0001f52c
         -----------------------------
-        5. Ver Datos Obtenidos\U0001f4c4
+        4. Ver Datos Obtenidos\U0001f4c4
         -----------------------------
-        6. Salir \U0001f6aa
+        0. Salir \U0001f6aa
         ============================
         """+c.CEND)
 
@@ -36,7 +36,7 @@ def main():
 
         if(op == "1"):
             #Limpia Consola
-            os.system("clear")
+            os.system("cls")
             global lista_contenido, lista_html
 
             print(c.CITALIC+c.CRED+"Realizando Peticiones....."+c.CEND)
@@ -61,13 +61,36 @@ def main():
                    
 
         elif(op == "2"):
-            os.system("clear")
+            os.system("cls")
             global lista_metadata
 
             lista_metadata = a.obtenerMetadata_mp(lista_contenido)
+            print("Metadatos de los Sitios Web encontrados correctamente!")
+            input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
             pass
         
         elif(op == "3"):
+
+            i = t.time()
+            a.encontrarPalabrasCategorias(lista_metadata)
+            f = t.time()
+            
+            print(c.CGREENBG+"Duración SIN multiprocessing: \u231B "+ str(f-i)+c.CEND )
+            
+            print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)   
+
+            # inicio_mul = t.time()
+            # lista_contenido = p.contenido_peticion_mp(d.sitios_webs)
+            # pass
+    
+            # fin_mul = t.time()
+            # print(c.CGREENBG+"Duración CON multiprocessing: \u231B "+ str(fin_mul-inicio_mul)+c.CEND)
+            # print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)        
+
+            print("Analisis de los Metadatos de los Sitios Web realizado correctamente!")
+            input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
+            
+
             break;
 
 
