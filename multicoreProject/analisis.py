@@ -1,5 +1,4 @@
 
-from curses import meta
 from multiprocessing import Pool
 import keywords as k
 from bs4 import BeautifulSoup
