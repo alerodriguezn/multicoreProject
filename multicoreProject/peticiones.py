@@ -3,7 +3,6 @@ import datos as d
 from bs4 import BeautifulSoup
 from multiprocessing import Pool
 import colores as c
-import main as m
 
 import time as t
  

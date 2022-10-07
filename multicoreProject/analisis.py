@@ -39,6 +39,7 @@ def obtenerMetadata_mp(lista_contenido):
 
 # Palabras Claves (tupla) Tupla con las palabras a validar en nuestras categorias existentes.
 def encontrarPalabrasCategorias(lista_metadata_sitio):
+    lista_resultados = []
     
     for metadata_sitio in lista_metadata_sitio:
         # Este diccionario contiene las categorias y la cantidad de palabras que se encuentran de ellas.
@@ -52,12 +53,17 @@ def encontrarPalabrasCategorias(lista_metadata_sitio):
 
         # Recorremos el resultado y retornamos la categoria dominante segun la cantidad de palabras
         mayor = 0
-        categoriaDominante = "Ninguna categoria presente"
+        categoriaDominante = "Otros"
         for key, value in diccionarioCategoria.items():
             if value > mayor:
                 categoriaDominante = key
                 mayor = value
-        print([metadata_sitio[0],categoriaDominante])
+        #print([metadata_sitio[0],categoriaDominante])
+        res = []
+        res.append(metadata_sitio[0])
+        res.append(categoriaDominante)
+        lista_resultados.append(res)
+    return lista_resultados
 
 # print("La categoria dominante es: "+encontrarPalabrasCategorias(("ropa","shoes","camisas","juegos","series","novela","pantalones")))
 # print("Resultados (Diccionario): ")

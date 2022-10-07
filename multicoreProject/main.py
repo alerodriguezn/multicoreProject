@@ -1,5 +1,5 @@
 #pip install bs4
-import time as t , peticiones as p, colores as c, os, datos as d, numpy as np, analisis as a
+import time as t , peticiones as p, colores as c, os, datos as d, numpy as np, analisis as a,grafico as g
 import multiprocessing
 
 
@@ -7,6 +7,7 @@ import multiprocessing
 lista_contenido = []
 lista_html = []
 lista_metadata = []
+diccionarioResultados = {}
 
 def main():
 
@@ -70,28 +71,26 @@ def main():
             pass
         
         elif(op == "3"):
+            global diccionarioResultados
 
             i = t.time()
-            a.encontrarPalabrasCategorias(lista_metadata)
+            diccionarioResultados = a.encontrarPalabrasCategorias(lista_metadata)
             f = t.time()
             
             print(c.CGREENBG+"Duración SIN multiprocessing: \u231B "+ str(f-i)+c.CEND )
             
-            print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)   
-
-            # inicio_mul = t.time()
-            # lista_contenido = p.contenido_peticion_mp(d.sitios_webs)
-            # pass
-    
-            # fin_mul = t.time()
-            # print(c.CGREENBG+"Duración CON multiprocessing: \u231B "+ str(fin_mul-inicio_mul)+c.CEND)
-            # print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)        
+            print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)       
 
             print("Analisis de los Metadatos de los Sitios Web realizado correctamente!")
             input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
             
 
-            break;
+        elif(op == "4"):
+            g.generarGrafico(diccionarioResultados)
+
+            
+            
+
 
 
     
