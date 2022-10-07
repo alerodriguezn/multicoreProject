@@ -89,11 +89,6 @@ def main():
             g.generarGrafico(diccionarioResultados)
 
             
-            
-
-
-
-    
 
 if __name__ == "__main__":
     main()
