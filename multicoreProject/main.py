@@ -42,10 +42,10 @@ def main():
 
             print(c.CITALIC+c.CRED+"Realizando Peticiones....."+c.CEND)
 
-            i = t.time()
-            p.obtener_contenido_secuencial(d.sitios_webs)
-            f = t.time()
-            print(c.CGREENBG+"Duración SIN multiprocessing: \u231B "+ str(f-i)+c.CEND )
+            #i = t.time()
+            #p.obtener_contenido_secuencial(d.sitios_webs)
+            #f = t.time()
+            #print(c.CGREENBG+"Duración SIN multiprocessing: \u231B "+ str(f-i)+c.CEND )
             
             print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)   
 

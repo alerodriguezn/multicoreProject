@@ -48,7 +48,7 @@ def encontrarPalabrasCategorias(lista_metadata_sitio):
         # Contamos la cantidad palabras encontradas en cada categoria
         for key ,value in k.palabras_claves.items():
             for i in value:
-                if i in metadata_sitio[1]:
+                if i in metadata_sitio[1].lower():
                     diccionarioCategoria[key]+=1
 
         # Recorremos el resultado y retornamos la categoria dominante segun la cantidad de palabras
