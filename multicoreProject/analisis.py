@@ -1,4 +1,5 @@
 
+from distutils.log import error
 from multiprocessing import Pool
 import keywords as k
 from bs4 import BeautifulSoup
@@ -49,13 +50,17 @@ def encontrarPalabrasCategorias(lista_metadata_sitio):
     
     for metadata_sitio in lista_metadata_sitio:
         # Este diccionario contiene las categorias y la cantidad de palabras que se encuentran de ellas.
-        diccionarioCategoria = {"comercio_electronico":0, "plataforma_peliculas":0, "tienda_ropa":0,"redes_comunicacion":0,"books":0}
-
+        diccionarioCategoria = {"comercio_electronico":0, "plataforma_peliculas":0, "tienda_ropa":0,"redes_comunicacion":0,"books":0,"sitios_no_visitados":0}
+        lista_palabras = ""
         # Contamos la cantidad palabras encontradas en cada categoria
         for key ,value in k.palabras_claves.items():
             for i in value:
-                if i in metadata_sitio[1].lower():
-                    diccionarioCategoria[key]+=1
+                if metadata_sitio[0] == "error":
+                    diccionarioCategoria['sitios_no_visitados']+=1
+                else:
+                    if i in metadata_sitio[1].lower():
+                        diccionarioCategoria[key]+=1
+                        lista_palabras += "-"+i
 
         # Recorremos el resultado y retornamos la categoria dominante segun la cantidad de palabras
         mayor = 0
@@ -68,6 +73,7 @@ def encontrarPalabrasCategorias(lista_metadata_sitio):
         res = []
         res.append(metadata_sitio[0])
         res.append(categoriaDominante)
+        res.append(lista_palabras)
         lista_resultados.append(res)
     return lista_resultados
 

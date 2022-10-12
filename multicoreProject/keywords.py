@@ -15,6 +15,7 @@ palabras_claves = {
 "redes_comunicacion" : ("mensajes", "notificación", "anuncio", "contenido", "cuenta", "usuario", "historia", "comentario", "amigos", "seguidores", "seguidos", "contraseña", "preferencias", "publicación", "compartir", "chat", "bucador", "inicio", "perfil", "reacción", "fotos", "videos", "like", "cuenta" "messages", "notification", "ad", "content", "account", "user", "story", "comment", "friends", "followers", "followed", "password", "preferences ", "post", "share", "browser", "home", "profile", "reaction", "photos", "videos", "account"),
 
 
-"books" : ("genero", "libro", "portada", "título", "sinopsis", "autor", "clasico", "best", "seller", "editorial", "edición", "sagas", "pasta", "capítulos", "contenido", "reseñas", "dedicatoria", "páginas", "librería", "oferta", "paquete", "combo", "educación", "educativos", "literatura", "separador", "genre", "book", "cover", "title", "synopsis", "author", "classic", "publisher", "sagas", "chapters", "content ", "reviews", "dedication", "pages", "bookstore", "offer", "package", "education", "educational", "literature")
+"books" : ("genero", "libro", "portada", "título", "sinopsis", "autor", "clasico", "best", "seller", "editorial", "edición", "sagas", "pasta", "capítulos", "contenido", "reseñas", "dedicatoria", "páginas", "librería", "oferta", "paquete", "combo", "educación", "educativos", "literatura", "separador", "genre", "book", "cover", "title", "synopsis", "author", "classic", "publisher", "sagas", "chapters", "content ", "reviews", "dedication", "pages", "bookstore", "offer", "package", "education", "educational", "literature"),
+
 
 }

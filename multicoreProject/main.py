@@ -1,7 +1,6 @@
 #pip install bs4
-import time as t , peticiones as p, colores as c, os, datos as d, numpy as np, analisis as a,grafico as g
+import time as t , peticiones as p, colores as c, os, datos as d, numpy as np, analisis as a,grafico as g, tabla as tb
 import multiprocessing
-
 
 
 lista_contenido = []
@@ -96,6 +95,11 @@ def main():
 
         elif(op == "4"):
             g.generarGrafico(diccionarioResultados)
+
+        elif(op =="5"):
+            tb.generarTabla(diccionarioResultados)
+            tb.imprimirTabla()
+            input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
 
             
 
