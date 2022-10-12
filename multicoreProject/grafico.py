@@ -1,3 +1,4 @@
+from re import L
 from matplotlib import pyplot as plt 
 import numpy as np 
 
@@ -29,13 +30,13 @@ def generarGrafico(resultados):
     #fig = plt.figure(figsize =(10, 7)) 
     #plt.pie(res, labels = categorias) 
     #plt.show()
-
-    explode = (0.15, 0.12, 0.16,0.12,0.15,0.12) 
+ 
+    explode = (0.18, 0.14, 0.16,0.12,0.15,0.12) 
   
-    colors = ( "orange", "cyan", "brown", 
-              "grey", "indigo", "beige") 
+    colors = ( "#f16d7b", "#71c1e6", "#a47bb3", 
+              "#f9cf59", "#57e2b1", "#019fb9") 
     
-    wp = { 'linewidth' : 1, 'edgecolor' : "green" } 
+    wp = { 'linewidth' : 1, 'edgecolor' : "#e6e6e6" }
     
     def func(pct, allvalues): 
         absolute = int(pct / 100.*np.sum(allvalues)) 
@@ -46,11 +47,13 @@ def generarGrafico(resultados):
     autopct = lambda pct: func(pct, res), 
     explode = explode,  
     labels = categorias, 
+    labeldistance=1.05,
     shadow = False, 
     colors = colors, 
     startangle = 70, 
     wedgeprops = wp, 
-    textprops = dict(color ="magenta")) 
+    textprops = dict(color ="black")) 
+
     
     ax.legend(wedges, categorias, 
               title ="Categorias", 
@@ -60,6 +63,14 @@ def generarGrafico(resultados):
     ax.set_title("Categorias") 
     
     plt.show()  
+
+ 
+    
+
+
+    
+
+
 
 
 
