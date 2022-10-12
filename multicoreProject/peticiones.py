@@ -31,7 +31,7 @@ def contenido_peticion(lista_sitios_web):
 
 def contenido_peticion_mp(lista_sitios_web,pc):
     "Funcion que ejecuta una funcion para obtener el contenido de un sitio web utilizando multiprocessing"
-    p = Pool(processes=12)
+    p = Pool(processes=pc)
     resultado = p.map(contenido_peticion,lista_sitios_web)
     p.close
     p.join
