@@ -1,9 +1,10 @@
+from exceptiongroup import catch
 import requests
 import datos as d
 from bs4 import BeautifulSoup
 from multiprocessing import Pool
 import colores as c
-
+import main as m
 import time as t
  
 
@@ -21,14 +22,17 @@ def contenido_peticion(lista_sitios_web):
     """
     Realiza una peticion a un sitio web y retorna el contenido
     """
-    return requests.get(lista_sitios_web)
+    try:
+        return requests.get(lista_sitios_web,verify=False, allow_redirects=False, stream=True,timeout=10)
+    except:
+        return "error"
 
+      
 
-def contenido_peticion_mp(lista_sitios_web):
+def contenido_peticion_mp(lista_sitios_web,pc):
     "Funcion que ejecuta una funcion para obtener el contenido de un sitio web utilizando multiprocessing"
-    p = Pool()
+    p = Pool(processes=12)
     resultado = p.map(contenido_peticion,lista_sitios_web)
     p.close
     p.join
     return resultado
-

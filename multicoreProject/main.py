@@ -8,6 +8,7 @@ lista_contenido = []
 lista_html = []
 lista_metadata = []
 diccionarioResultados = {}
+procesos = 0
 
 def main():
 
@@ -37,36 +38,44 @@ def main():
 
         if(op == "1"):
             #Limpia Consola
+            global procesos
             os.system("cls")
             global lista_contenido, lista_html
 
-            print(c.CITALIC+c.CRED+"Realizando Peticiones....."+c.CEND)
+            procesos = int(input(c.CYELLOW+"Cantidad de Procesos \U0001f477:  "+c.CEND))
 
-            #i = t.time()
-            #p.obtener_contenido_secuencial(d.sitios_webs)
-            #f = t.time()
-            #print(c.CGREENBG+"Duración SIN multiprocessing: \u231B "+ str(f-i)+c.CEND )
-            
-            print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)   
+            if(procesos<24):
 
-            inicio_mul = t.time()
-            lista_contenido = p.contenido_peticion_mp(d.sitios_webs)
-            pass
-    
-            fin_mul = t.time()
-            print(c.CGREENBG+"Duración CON multiprocessing: \u231B "+ str(fin_mul-inicio_mul)+c.CEND)
-            print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)        
+                print(c.CITALIC+c.CRED+"Realizando Peticiones....."+c.CEND)
 
-            input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
+                #i = t.time()
+                #p.obtener_contenido_secuencial(d.sitios_webs)
+                #f = t.time()
+                #print(c.CGREENBG+"Duración SIN multiprocessing: \u231B "+ str(f-i)+c.CEND )
+                
+                print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)   
 
-                   
+                inicio_mul = t.time()
+                lista_contenido = p.contenido_peticion_mp(d.sitios_webs,procesos)
+                pass
+        
+                fin_mul = t.time()
+                print(c.CGREENBG+"Duración CON multiprocessing: \u231B "+ str(fin_mul-inicio_mul)+c.CEND)
+                print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)        
+
+                input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
+            else:
+                print(c.CREDBG2+c.CWHITE2+'Cantidad de procesos No Validos'+c.CEND)
+                print(c.CYELLOW+"-------------------------------------------------"+c.CEND)        
+                input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
+
 
         elif(op == "2"):
             os.system("cls")
             global lista_metadata
 
             lista_metadata = a.obtenerMetadata_mp(lista_contenido)
-            print("Metadatos de los Sitios Web encontrados correctamente!")
+            print("Metadatos de los Sitios Web encontrados correctamente! \u2705")
             input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
             pass
         
@@ -77,11 +86,11 @@ def main():
             diccionarioResultados = a.encontrarPalabrasCategorias(lista_metadata)
             f = t.time()
             
-            print(c.CGREENBG+"Duración SIN multiprocessing: \u231B "+ str(f-i)+c.CEND )
+            print(c.CGREENBG+"Duración: \u231B "+ str(f-i)+c.CEND )
             
             print(c.CYELLOW+"--------------------------------------------------------"+c.CEND)       
 
-            print("Analisis de los Metadatos de los Sitios Web realizado correctamente!")
+            print("Analisis de los Metadatos de los Sitios Web realizado correctamente! \u2705")
             input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
             
 

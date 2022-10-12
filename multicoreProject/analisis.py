@@ -5,26 +5,33 @@ from bs4 import BeautifulSoup
 
 
 def obtenerMetadata(sitio):
-    
     lista = []
-    metadata = ""
-    url = sitio.url
-    lista.append(url)
-    contenido = BeautifulSoup(sitio.content,"html.parser")
+    if(sitio != "error"):
+        lista = []
+        metadata = ""
+        url = sitio.url
+        lista.append(url)
+        contenido = BeautifulSoup(sitio.content,"html.parser")
 
-    keywords = str(contenido.find(attrs={'name':'keywords'}))
-    if (keywords != None):
-        metadata = keywords
-    descrip_name = str(contenido.find(attrs={'name':'Description'}))
-    if (descrip_name != None):
-        metadata += " "+descrip_name
-    descrip_prop = str(contenido.find(attrs={'property':'og:description'}))
-    if (descrip_prop != None):
-        metadata += " "+descrip_prop
+        keywords = str(contenido.find(attrs={'name':'keywords'}))
+        if (keywords != None):
+            metadata = keywords
+        descrip_name = str(contenido.find(attrs={'name':'Description'}))
+        if (descrip_name != None):
+            metadata += " "+descrip_name
+        descrip_prop = str(contenido.find(attrs={'property':'og:description'}))
+        if (descrip_prop != None):
+            metadata += " "+descrip_prop
 
-    lista.append(metadata)
+        lista.append(metadata)
 
-    return lista
+        return lista
+    else:
+        lista.append("Error")
+        lista.append("Error")
+
+        return lista
+
 
 
 def obtenerMetadata_mp(lista_contenido):
@@ -42,7 +49,7 @@ def encontrarPalabrasCategorias(lista_metadata_sitio):
     
     for metadata_sitio in lista_metadata_sitio:
         # Este diccionario contiene las categorias y la cantidad de palabras que se encuentran de ellas.
-        diccionarioCategoria = {"comercio_electronico":0, "servicios_streaming":0, "tienda_ropa":0}
+        diccionarioCategoria = {"comercio_electronico":0, "plataforma_peliculas":0, "tienda_ropa":0,"redes_comunicacion":0,"books":0}
 
         # Contamos la cantidad palabras encontradas en cada categoria
         for key ,value in k.palabras_claves.items():
