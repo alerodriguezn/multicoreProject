@@ -2,8 +2,6 @@ from re import L
 from matplotlib import pyplot as plt 
 import numpy as np 
 
-
-
 data= []
 res = [0,0,0,0,0,0,0]
   
