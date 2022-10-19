@@ -57,7 +57,7 @@ def encontrarPalabrasCategorias(lista_metadata_sitio):
     
     for metadata_sitio in lista_metadata_sitio:
         # Este diccionario contiene las categorias y la cantidad de palabras que se encuentran de ellas.
-        diccionarioCategoria = {"comercio_electronico":0, "plataforma_peliculas":0, "tienda_ropa":0,"redes_comunicacion":0,"books":0,"sitios_no_visitados":0}
+        diccionarioCategoria = {"comercio_electronico":0, "plataforma_peliculas":0, "tienda_ropa":0,"redes_sociales":0, "tecnologia":0,"books":0,"sitios_no_visitados":0}
         lista_palabras = ""
         # Contamos la cantidad palabras encontradas en cada categoria
         for key ,value in k.palabras_claves.items():
@@ -73,7 +73,7 @@ def encontrarPalabrasCategorias(lista_metadata_sitio):
         mayor = 0
         categoriaDominante = "Otros"
         for key, value in diccionarioCategoria.items():
-            if value > mayor:
+            if value >= 3 >= mayor:
                 categoriaDominante = key
                 mayor = value
         #print([metadata_sitio[0],categoriaDominante])

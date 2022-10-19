@@ -9,6 +9,13 @@ lista_metadata = []
 diccionarioResultados = {}
 procesos = 0
 
+def limpiarDatos():
+    global lista_contenido,lista_metadata,lista_html, diccionarioResultados
+    lista_contenido = []
+    lista_html = []
+    lista_metadata = []
+    diccionarioResultados = {}
+
 def main():
 
 
@@ -40,6 +47,7 @@ def main():
         if(op == "1"):
             #Limpia Consola
             global procesos
+            limpiarDatos()
             os.system("cls")
             global lista_contenido, lista_html
 
@@ -75,6 +83,7 @@ def main():
             os.system("cls")
             global lista_metadata
 
+            lista_metadata = [] #Se asegura de que antes este limpia
             lista_metadata = a.obtenerMetadata_mp(lista_contenido)
             print("Metadatos de los Sitios Web encontrados correctamente! \u2705")
             input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
@@ -82,8 +91,8 @@ def main():
         
         elif(op == "3"):
             global diccionarioResultados
-
             i = t.time()
+            diccionarioResultados = {} #Se asegura de que antes este limpia
             diccionarioResultados = a.encontrarPalabrasCategorias(lista_metadata)
             f = t.time()
             

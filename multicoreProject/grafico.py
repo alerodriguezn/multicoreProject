@@ -2,11 +2,12 @@ from re import L
 from matplotlib import pyplot as plt 
 import numpy as np 
 
-data= []
-res = [0,0,0,0,0,0,0]
   
 def generarGrafico(resultados):
-    
+
+    data= []
+    res = [0,0,0,0,0,0,0,0]
+
     for valor in resultados:
         data.append(valor[1])
 
@@ -17,24 +18,26 @@ def generarGrafico(resultados):
             res[1]+= 1
         elif dato =="tienda_ropa":
             res[2]+= 1
-        elif dato =="redes_comunicacion":
+        elif dato =="redes_sociales":
             res[3]+= 1
-        elif dato =="books":
+        elif dato =="tecnologia":
             res[4]+= 1
-        elif dato =="Otros":
+        elif dato =="books":
             res[5]+= 1
-        elif dato =="sitios_no_visitados":
+        elif dato =="Otros":
             res[6]+= 1
+        elif dato =="sitios_no_visitados":
+            res[7]+= 1
 
-    categorias = ["Comercio Electronico","Streaming/Peliculas/Series","Ropa","Redes de Comunicacion","Libros","No relevantes","Sitio No visitado(error)"] 
+    categorias = ["Comercio Electronico","Streaming/Peliculas/Series","Ropa","Redes Sociales", "Tecnologia" ,"Libros","No relevantes","Sitio No visitado(error)"] 
     #fig = plt.figure(figsize =(10, 7)) 
     #plt.pie(res, labels = categorias) 
     #plt.show()
- 
-    explode = (0.18, 0.14, 0.16,0.12,0.15,0.12,0.13) 
+    pass
+    explode = (0.16, 0.12, 0.14,0.11,0.13,0.11,0.11, 0,12) 
   
     colors = ( "#f16d7b", "#71c1e6", "#a47bb3", 
-              "#f9cf59", "#57e2b1", "#019fb9","#019fb9") 
+              "#f9cf59", "#57e2b1", "#019fb9","#71c1e6", "#57e2b1") 
     
     wp = { 'linewidth' : 1, 'edgecolor' : "#e6e6e6" }
     
