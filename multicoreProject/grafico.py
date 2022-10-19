@@ -28,7 +28,7 @@ def generarGrafico(resultados):
         elif dato =="sitios_no_visitados":
             res[6]+= 1
 
-    categorias = ["Comercio","Streaming","Ropa","Redes","Libros","No relevantes","Sitio No visitado(error)"] 
+    categorias = ["Comercio Electronico","Streaming/Peliculas/Series","Ropa","Redes de Comunicacion","Libros","No relevantes","Sitio No visitado(error)"] 
     #fig = plt.figure(figsize =(10, 7)) 
     #plt.pie(res, labels = categorias) 
     #plt.show()

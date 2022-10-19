@@ -1,12 +1,12 @@
 sitios_webs = [
-'https://www.netflix.com/us-es/',
+'https://www.netflix.com/',
 'https://www.apple.com/la/',
 'https://www.disneyplus.com/',
 'https://hushpuppies.cr/',
 'https://www.bershka.com/',
 'https://github.com/',
 'https://www.hbomax.com/',
-'https://www.nike.com/'
+'https://www.nike.com/',
 'https://www.adidas.com.ar/',
 'https://www.hm.com/cr/',
 'https://bookshop.org/',

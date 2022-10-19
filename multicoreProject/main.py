@@ -1,5 +1,5 @@
 #pip install bs4
-import time as t , peticiones as p, colores as c, os, datos as d, numpy as np, analisis as a,grafico as g, tabla as tb
+import time as t , peticiones as p, colores as c, os, datos as d, numpy as np, analisis as a,grafico as g, tabla as tb,gui as gui
 import multiprocessing
 
 
@@ -26,6 +26,8 @@ def main():
         3. Analizar Metadatos \U0001f52c
         -----------------------------
         4. Ver Datos Obtenidos\U0001f4c4
+        -----------------------------
+        5. Ver Tabla con los Datos Obtenidos\U0001f4c3
         -----------------------------
         0. Salir \U0001f6aa
         ============================
@@ -98,7 +100,7 @@ def main():
 
         elif(op =="5"):
             tb.generarTabla(diccionarioResultados)
-            tb.imprimirTabla()
+            gui.desplegarGUI()
             input(c.CREDBG2+c.CWHITE2+'Presione ENTER para continuar...'+c.CEND)
 
             

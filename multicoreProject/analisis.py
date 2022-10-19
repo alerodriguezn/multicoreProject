@@ -5,6 +5,7 @@ import keywords as k
 from bs4 import BeautifulSoup
 
 
+
 def obtenerMetadata(sitio):
     lista = []
     if(sitio != "error"):
@@ -13,24 +14,30 @@ def obtenerMetadata(sitio):
         url = sitio.url
         lista.append(url)
         contenido = BeautifulSoup(sitio.content,"html.parser")
-
+        """
         keywords = str(contenido.find(attrs={'name':'keywords'}))
         if (keywords != None):
             metadata = keywords
         descrip_name = str(contenido.find(attrs={'name':'Description'}))
         if (descrip_name != None):
             metadata += " "+descrip_name
-        descrip_prop = str(contenido.find(attrs={'property':'og:description'}))
-        if (descrip_prop != None):
-            metadata += " "+descrip_prop
+        """
+        p = str(contenido.find("p"))
+        if (p != None):
+            metadata += " "+p
+        h1 = str(contenido.find("h1"))
+        if (h1 != None):
+            metadata += " "+h1
+        
+        meta = str(contenido.findAll('meta'))
+        if (meta != None):
+            metadata += " "+meta
 
         lista.append(metadata)
 
         return lista
     else:
         lista.append("Error")
-        lista.append("Error")
-
         return lista
 
 
@@ -55,7 +62,7 @@ def encontrarPalabrasCategorias(lista_metadata_sitio):
         # Contamos la cantidad palabras encontradas en cada categoria
         for key ,value in k.palabras_claves.items():
             for i in value:
-                if metadata_sitio[0] == "error":
+                if metadata_sitio[0] == "Error":
                     diccionarioCategoria['sitios_no_visitados']+=1
                 else:
                     if i in metadata_sitio[1].lower():
