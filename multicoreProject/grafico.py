@@ -34,7 +34,7 @@ def generarGrafico(resultados):
     #plt.pie(res, labels = categorias) 
     #plt.show()
     pass
-    explode = (0.16, 0.12, 0.14,0.11,0.13,0.11,0.11, 0.12) 
+    explode = (0.24, 0.12, 0.25,0.11,0.13,0.11,0.11, 0.12) 
   
     colors = ( "#f16d7b", "#71c1e6", "#a47bb3", 
               "#f9cf59", "#57e2b1", "#019fb9","#71c1e6", "#57e2b1") 

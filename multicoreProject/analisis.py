@@ -33,7 +33,11 @@ def obtenerMetadata(sitio):
         if (meta != None):
             metadata += " "+meta
 
-        lista.append(metadata)
+        meta1 = metadata.replace("<"," ")
+        meta2 = meta1.replace(">"," ")
+        meta3 = meta2.replace("."," ")
+
+        lista.append(meta3)
 
         return lista
     else:
